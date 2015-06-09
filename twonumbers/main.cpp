@@ -7,7 +7,7 @@ using namespace std;
 vector<int> findSum(const vector<int>& source, int target)
 {
     vector<int> index(2);
-    int size = source.size();
+    int size = (int)source.size();
     for(int i=0; i<size; i++){
         index[0] = i;
         for(int j=i+1; j<size;j++){
@@ -24,17 +24,17 @@ vector<int> findSum(const vector<int>& source, int target)
 
 vector<int> twoSum(vector<int>& nums, int target) {
     vector<int> index(2);
-    int n = nums.size();
+    int n = (int)nums.size();
     map<int,int> mapv;
     for(int i = 0; i < n ; i++) {
         mapv[nums[i]] = i;
     }
-    map<int,int>::iterator it = mapv.end();
+    map<int,int>::iterator it;
     for(int i = 0; i < n; i++) {
+        index[0] = i;
         it = mapv.find(target - nums[i]);
-        if(it != mapv.end() && i!=it->second){
-            index[0]=min(i, it->second);
-            index[1]=max(i, it->second);
+        if(it != mapv.end() && i != it->second){
+            index[1]=it->second;
             break;
         }
     }
