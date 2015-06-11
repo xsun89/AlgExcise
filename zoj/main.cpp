@@ -74,7 +74,51 @@ bool isxzojx(const char *source) {
 
     return ret;
 }
+bool isazbojac(const char *source) {
+    int len = strlen(source);
+    int i = 0;
+    int numberZ = 0;
+    int positionZ = -1;
+    int numberJ = 0;
+    int numberO = 0;
+    int positionJ = -1;
+    int positionO = -1;
+    int numberA = 0;
+    int numberB = 0;
+    int numberC = 0;
+    bool isZ = false;
+    bool isJ = false;
+    bool ret = true;
+    while (i < len) {
+        if (source[i] == 'z') {
+            numberZ++;
+            positionZ = i;
+            isZ = true;
+        }
+        if (source[i] == 'j') {
+            numberJ++;
+            positionJ = i;
+            isJ = true;
+        }
 
+        if (isZ == false && isJ == false && source[i] == 'o') {
+            numberA++;
+        }
+        if(isZ == true && isJ == false && source[i] == 'o'){
+            numberB++;
+        }
+        if(isZ == true && isJ == true && source[i] == 'o'){
+            numberC++;
+        }
+        i++;
+    }
+
+    if (numberJ != 1 || numberZ != 1 || numberB < 1 || numberC != 2*numberA) {
+        ret = false;
+    }
+
+    return ret;
+}
 int main() {
     char source[100];
     cin >> source;
